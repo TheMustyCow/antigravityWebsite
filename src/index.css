@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #f8fafc;
+    --surface: #ffffff;
+    --border: #e2e8f0;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --primary: #3b82f6;
+    --primary-hover: #2563eb;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
+    --info: #0ea5e9;
+  }
+
+  .dark {
+    --background: #0f172a;
+    --surface: #1e293b;
+    --border: #334155;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --primary: #3b82f6;
+    --primary-hover: #60a5fa;
+    --success: #34d399;
+    --warning: #fbbf24;
+    --error: #f87171;
+    --info: #38bdf8;
+  }
+
+  body {
+    @apply bg-[var(--background)] text-[var(--text-main)] antialiased selection:bg-blue-500/30;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-[var(--surface)] opacity-90 backdrop-blur-md border border-border shadow-sm rounded-xl transition-all duration-300;
+  }
+  .glass-card:hover {
+    @apply shadow-md border-blue-500;
+  }
+  .stat-card {
+    @apply glass-card p-6 flex flex-col gap-2;
+  }
+  .network-card {
+    @apply glass-card p-6 relative overflow-hidden cursor-pointer;
+  }
+}
+
+@layer utilities {
+  .animate-pulse-slow {
+    animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .7; }
+  }
+  .glow-primary {
+    box-shadow: 0 0 15px -3px var(--primary);
+  }
+  .glow-success {
+    box-shadow: 0 0 15px -3px var(--success);
+  }
+  .glow-error {
+    box-shadow: 0 0 15px -3px var(--error);
+  }
+}
